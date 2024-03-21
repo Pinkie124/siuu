@@ -1,4 +1,4 @@
-"""Paint, for drawing shapes.
++"""Paint, for drawing shapes.
 
 Exercises
 
@@ -39,22 +39,38 @@ def square(start, end):
 def circle(start, end):
     """Draw circle from start to end."""
     pass  # TODO
-	up()
-	goto(start.x,start.y - (end.x - start.x))
-        down()
-        begin_fill()
-        circle((end.x - start.x)/ 2)
-        end_fill()
+
 
 def rectangle(start, end):
     """Draw rectangle from start to end."""
     pass  # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
 
+    for _ in range(2):
+       forward(end.x - start.x)
+       left(90)
+       forward(endy - start.y)
+       left(90)
+
+       end_fill()
 
 def triangle(start, end):
     """Draw triangle from start to end."""
     pass  # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
 
+    for _ in range(3):
+       goto(end.x, end.y)
+       goto(start.x, end.y)
+       goto((start.x + end.x) / 2, start.y)
+
+    end_fill()
 
 def tap(x, y):
     """Store starting point or draw shape."""
@@ -84,11 +100,9 @@ onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
-onkey(lambda:color('brown'),'C')
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
 onkey(lambda: store('shape', circle), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 done()
- 
